@@ -1,25 +1,34 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Navbar from './components/Navbar';
-import About from './pages/about';
-import Contact from './pages/contact';
-import Coaching from './pages/coaching';
-import Resume from './pages/resume';
+import {BrowserRouter, Routes, Route, Outlet, Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+
+import HeaderNavbar from "./components/navbar/navbar";
+import Home from "./components/pages/home";
+import Coaching from "./components/pages/coaching";
+import Experience from "./components/pages/experience";
+import Resume from "./components/pages/resume";
+import Contact from "./components/pages/contact";
+
+
+
+
 
 
 function App() {
   return (
-    <Router>
-      <Navbar/>
+    <BrowserRouter>
+    <HeaderNavbar/>
+    <div>
       <Routes>
-        <Route path='/' exact component={About}/>
-        <Route path='/coaching' exact component={Coaching}/>
-        <Route path='/resume' exact component={Resume}/>
-        <Route path='/contact' exact component={Contact}/>
-
+        <Route exact path="/" element={<Home/>}></Route>
+        <Route path="/coaching" element={<Coaching/>}></Route>
+        <Route path="/resume" element={<Resume/>}></Route>
+        <Route path="/contact" element={<Contact/>}></Route>
       </Routes>
-    </Router>
+    </div>
+    </BrowserRouter>
+
   );
 }
 
